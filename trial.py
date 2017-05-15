@@ -1,6 +1,7 @@
 from psychopy import core, visual, event
 import random
-def doOneTrial(stimuli_raw, clock_positions, isPractice, win, stimuliType, trialCount, blockCount, debug):
+def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
+               stimuliType, trialCount, blockCount, debug):
     trialCount=trialCount+1
     if debug: print("Trial  :                              :\t\tTrial {}".format(trialCount))
 
@@ -24,15 +25,18 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win, stimuliType, trial
         core.wait(1) # ISI (inter-stimulus-interval) in seconds
 
     # phase 2, recall
+    # the circle is just for adjusting clock positions in retrospect, so it can be commented out for the production version
+    showCircle=visual.Circle(win, lineColor='black', radius=.35)
+    showCircle.draw() # to buffer
     for i in range(len(stimuli)):
         showImage=visual.ImageStim(win) # initialise psychopy visual window called showImage
         showImage.setImage(stimuliType + "/" + stimuli[i]) # say which image gets shown on this iteration
         showImage.pos = clock_positions[i] # clockwise on screen
-        showImage.draw() # to buffer
-        win.flip() # to screen
-        core.wait(1) # stimulus display duration in seconds
-        win.flip() # clear screen
-        core.wait(1) # ISI (inter-stimulus-interval) in seconds
+        showImage.draw() # to buffer without overwriting the circle
+    win.flip() # to screen
+    core.wait(1) # stimulus display duration in seconds
+    win.flip() # clear screen
+    core.wait(1) # ISI (inter-stimulus-interval) in seconds
 
     # phase 3, response collection
 

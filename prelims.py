@@ -31,7 +31,7 @@ def showInstructions(verbose, debug):
       size = [1920,1080],
       color = [255,255,255],
     #   allowGUI = True,
-      units = 'deg',
+      units = 'height',
       monitor = 'testMonitor',
       screen = 1,
       fullscr = True)
