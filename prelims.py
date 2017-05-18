@@ -32,7 +32,7 @@ def showInstructions(verbose, debug):
       color = [255,255,255],
     #   allowGUI = True,
       units = 'height',
-      monitor = 'testMonitor',
+     monitor = 'testMonitor', # obligatory argument to avoid a warning
       screen = 1,
       fullscr = True)
     # show the instructions
@@ -45,13 +45,10 @@ def showInstructions(verbose, debug):
       height=0.03,
       text='Hebb Experiment.\n\nYou will be presented with a series of images, one at a time in the center of the screen.\n\nThen you will be presented with the same images arranged in a circle.\n\nYour task is to click on the images in the order that they were originally presented to you.\n\nPress any key to begin.')
     message1.draw()
-    win.flip()
-    if debug:
-        my_maxWait=float(2)
-        event.waitKeys(my_maxWait)
-    else:
-        if 'escape' in event.waitKeys(): core.quit()
-
+    win.flip() # flip the text
+    if 'escape' in event.waitKeys(): core.quit()
+    win.flip() # blank screen after keypress
+    core.wait(2)
     return win
 
 def chooseStimuli(verbose, debug):
@@ -61,4 +58,4 @@ def chooseStimuli(verbose, debug):
     m2 = m[5:10]
     all_faces = sorted(os.listdir("faces"))
     f = random.sample(all_faces, 5)
-    return m1,m2,f
+    return m1, m2, f

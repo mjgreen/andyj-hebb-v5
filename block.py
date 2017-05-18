@@ -25,7 +25,7 @@ def doOneBlock(verbose, debug, isPractice, m1, m2, f, win, blockCount):
         all_faces = sorted(os.listdir("faces"))
         f = random.sample(all_faces, 5)
         # this gets run when it is still practice
-        print("Block  :                              :\t\tBlock {} (practice is block 0)".format(blockCount))
+        print("Block  :                              :\t\tBlock {} (practice is block 0)\n".format(blockCount))
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=m1, clock_positions=clock_positions, isPractice=isPractice, win=win,
             stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug)
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=m2, clock_positions=clock_positions, isPractice=isPractice, win=win,
