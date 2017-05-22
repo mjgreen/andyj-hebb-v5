@@ -32,7 +32,7 @@ def showInstructions(verbose, debug):
       color = [255,255,255],
     #   allowGUI = True,
       units = 'height',
-     monitor = 'testMonitor', # obligatory argument to avoid a warning
+      monitor = 'testMonitor', # obligatory argument to avoid a warning
       screen = 1,
       fullscr = True)
     # show the instructions

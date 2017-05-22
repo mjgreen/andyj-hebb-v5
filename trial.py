@@ -34,7 +34,6 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
     # define the order of clock positions to which images will be drawn
     correct_indices = random.sample([0,1,2,3,4],5) # e.g., [2,0,3,1,4]
 
-
     # for debug list clockposition contents
     stimuli_in_clockwise_order = []
     for i in [0,1,2,3,4]:
@@ -69,10 +68,15 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
     win.flip() # to screen
 
     # phase 3, response collection
+    # set the mouse cursor to visible because the participant is using the mouse to click on images and needs to see where it is currently hovering.
     mouse.setPos(newPos=(0,0))
     mouse.setVisible(True)
+    # initialise a vector of responses called response_indices
     response_indices = []
+    # This while loop listens for a mouse click until there have been 5 mouse clicks in valid images
     while len(response_indices) < len(stimuli):
+        # This for loop listens for mouse clicks in images. It does it by listening to a single image on each iteration.
+        # The experience for the participant is that the listener is listening to all images at the same time though.
         for clock_pos_index in [0,1,2,3,4]:
             if stimuliType == 'matrices':
                 y_offset=.1
@@ -84,46 +88,53 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
                                        (clock_positions[clock_pos_index][0]-0.1, clock_positions[clock_pos_index][1]+y_offset),
                                        (clock_positions[clock_pos_index][0]+0.1, clock_positions[clock_pos_index][1]+y_offset),
                                        (clock_positions[clock_pos_index][0]+0.1, clock_positions[clock_pos_index][1]-y_offset)
-                                       )
-                                    )
+                                                )
+                                                          )
                                     )
                 and
                 clock_pos_index not in response_indices):
+                    # populate a response vector,
+                    # elements are 0 to 4 representing how far clockwise the clicked-on image was (i.e., clock_pos_index),
+                    # order of elements represents temporal order in which the clicked-on images were clicked on.
+                    # So a 3 as the first element means that the first image they clicked on was at clock position 3.
                     response_indices.append(clock_pos_index)
-                    # indicate already selected
-                    # first redraw the images
-                    # write the stimuli to the backbuffer
+                    # indicate already selected:
+                    # ... first redraw the images to a new back buffer
                     for i in range(len(stimuli)): # [0,1,2,3,4]
                         showImage=visual.ImageStim(win) # initialise psychopy visual window called showImage
                         showImage.setImage(stimuliType + "/" + stimuli[i]) # say which image gets shown on this iteration
                         showImage.pos = clock_positions[correct_indices[i]] # use the i'th element of correct_indices as the clock position for the i'th stimulus
                         showImage.draw() # to buffer
-                    # then overlay borders
+                    # ... then overlay borders to the back buffer, before any flip
                     if stimuliType == 'matrices':
                         y_offset=.1
                     else:
                         y_offset=.125
                     for j in [0,1,2,3,4]:
                         if j in response_indices:
-                            my_line_color='blue'
+                            my_line_color='blue' # blue border if the image has been clicked on
                             my_line_width=20
                         else:
-                            my_line_color='black'
+                            my_line_color='black' # redraw existing black border if the image hasn't been clicked on yet
                             my_line_width=2
+                        # 4 pairs of numbers are 4 pairs of points comprising one border: this gets run once for each image, using j as index
                         showBorder=visual.ShapeStim(win, "height", lineColor=my_line_color, lineWidth=my_line_width,
                                                 vertices=( (clock_positions[j][0]-0.1, clock_positions[j][1]-y_offset),
                                                            (clock_positions[j][0]-0.1, clock_positions[j][1]+y_offset),
                                                            (clock_positions[j][0]+0.1, clock_positions[j][1]+y_offset),
                                                            (clock_positions[j][0]+0.1, clock_positions[j][1]-y_offset) ) )
-                        showBorder.draw()
-                    win.flip()
-    # this flip runs after 5 responses have been made
+                        showBorder.draw() # draw borders to back buffer without yet flipping
+                    win.flip() # flip the backbuffer that contains 5 images with either a black or a blue border to window. All 5 get flipped even though there is only one newly-blue border.
+    # this flip runs after 5 responses have been made, and all 5 images have a blue border indicating that they have been clicked on
     win.flip()
     if debug: print("response_indices                      :\t\t{}".format(response_indices))
 
+    # turn the mouse visibility off because the participant isn't using it to make a response any more so they don't need to know where it is hovering
     mouse.setVisible(False)
 
     # phase 4, response evaluation
+    # populate an evaluation vector:
+    #  for each response_indices[i], if it has the same value as correct_indices[i], evaluation[i] gets a 1, else 0
     evaluation = []
     for i in [0,1,2,3,4]:
         if response_indices[i] == correct_indices[i]:
@@ -133,6 +144,7 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
     if debug: print("evaluation                            :\t\t{}".format(evaluation))
     else: print("evaluation                            :\t\t{}".format(evaluation))
 
+    # Return a single value, 1 if every response matched correct, 0 otherwise (i.e., they had to get every element of the presented sequence in the right order to get the mark)
     trial_accuracy = False
     trial_accuracy_accumulator = 0
     for i in [0,1,2,3,4]:
