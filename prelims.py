@@ -20,7 +20,8 @@ def getSessionInfo(verbose, debug):
         if verbose: print('The user pressed cancel at the dialogue box.')
         core.quit()
 
-    participant_data_filename = dlg.GetTitle() + '_' + 'Version' + '_' + session_info['Version'] + '_' + session_info['Participant identifier'] + '_' + session_info['Participant number (optional)'].zfill(3) + '_' + session_info['Date']
+    # participant_data_filename = dlg.GetTitle() + '_' + 'Version' + '_' + session_info['Version'] + '_' + session_info['Participant identifier'] + '_' + session_info['Participant number (optional)'].zfill(3) + '_' + session_info['Date']
+    participant_data_filename = session_info['Participant number (optional)'].zfill(3) + '_' + session_info['Participant identifier'] + '_'  + session_info['Date']
 
     return participant_data_filename, session_info
 

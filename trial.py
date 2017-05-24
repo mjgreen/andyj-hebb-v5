@@ -1,8 +1,8 @@
 from psychopy import core, visual, event
-import random
+import random, os
 
 def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
-               stimuliType, trialCount, blockCount, debug):
+               stimuliType, trialCount, blockCount, debug, participant_data_filename, session_info):
     trialCount=trialCount+1
     if debug: print("Trial  :                              :\t\tTrial {}".format(trialCount))
 
@@ -156,6 +156,21 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
         trial_accuracy = True
     if debug: print("Whole-Trial accuracy                  :\t\t{}".format(trial_accuracy))
     else: print("Whole-Trial accuracy                  :\t\t{}".format(trial_accuracy))
+
+    # write data to file
+    #  open a data directory if it doesn't exist
+    if not os.path.exists('data'):
+        os.makedirs('data')
+    #  (a) is append to file, (+) is create if not there
+    file_out = open(os.path.join('data', participant_data_filename + '.txt'), "a+")
+    if trialCount == 1:
+        # write headers
+        file_out.write("participant_number\ttrial_number\tstimuli_type\taccuracy_per_clock_position\taccuracy_per_trial\n")
+    # write data
+    file_out.write('{}\t{}\t{}\t{}\t{}\n'.format(session_info['Participant number (optional)'], trialCount, stimuliType, evaluation, trial_accuracy))
+    file_out.close()
+
+
 
     # phase 5, feedback, only if it's the practice block
     if blockCount==0:

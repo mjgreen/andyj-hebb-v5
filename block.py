@@ -1,6 +1,5 @@
 import trial, os, random
-def doOneBlock(verbose, debug, isPractice, m1, m2, f, win, blockCount):
-
+def doOneBlock(verbose, debug, isPractice, m1, m2, f, win, blockCount, participant_data_filename, session_info):
     # make a list of clock positions
     # clock_positions = [(0.37925925925925924, 0.0), (0.11719755638516526, 0.36069698988379156), (-0.30682718601479481, 0.2229229993879602), (-0.30682718601479492, -0.22292299938796012), (0.11719755638516517, -0.36069698988379156)]
     clock_positions = [
@@ -27,11 +26,11 @@ def doOneBlock(verbose, debug, isPractice, m1, m2, f, win, blockCount):
         # this gets run when it is still practice
         print("Block  :                              :\t\tBlock {} (practice is block 0)\n".format(blockCount))
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=m1, clock_positions=clock_positions, isPractice=isPractice, win=win,
-            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug)
+            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug, participant_data_filename=participant_data_filename, session_info=session_info)
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=m2, clock_positions=clock_positions, isPractice=isPractice, win=win,
-            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug)
+            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug, participant_data_filename=participant_data_filename, session_info=session_info)
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=f, clock_positions=clock_positions, isPractice=isPractice, win=win,
-            stimuliType="faces", trialCount=trialCount, blockCount=blockCount, debug=debug)
+            stimuliType="faces", trialCount=trialCount, blockCount=blockCount, debug=debug, participant_data_filename=participant_data_filename, session_info=session_info)
         # turn off isPractice now
         isPractice=False
     else:
@@ -39,10 +38,10 @@ def doOneBlock(verbose, debug, isPractice, m1, m2, f, win, blockCount):
         blockCount=blockCount+1
         print("Block  :                              :\t\tBlock {}".format(blockCount))
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=m1, clock_positions=clock_positions, isPractice=isPractice, win=win,
-            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug)
+            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug, participant_data_filename=participant_data_filename, session_info=session_info)
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=m2, clock_positions=clock_positions, isPractice=isPractice, win=win,
-            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug)
+            stimuliType="matrices", trialCount=trialCount, blockCount=blockCount, debug=debug, participant_data_filename=participant_data_filename, session_info=session_info)
         trialCount, blockCount = trial.doOneTrial(stimuli_raw=f, clock_positions=clock_positions, isPractice=isPractice, win=win,
-            stimuliType="faces", trialCount=trialCount, blockCount=blockCount, debug=debug)
+            stimuliType="faces", trialCount=trialCount, blockCount=blockCount, debug=debug,participant_data_filename=participant_data_filename, session_info=session_info)
     #
     return blockCount
