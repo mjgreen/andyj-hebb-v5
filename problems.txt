@@ -1,0 +1,4 @@
+What directory will psychopy gui open in on windows? data/ is currently a relative path, so if it opens somewhere outside the repo, that is where the data will get saved. A possible solution is to specify to the RA that they need to open a command line, change to the wd and issue python main.py from the root of the repo. Otherwise, can you cd from inside the script? Hopefully psychopy gui will cd to the script and the relative path will still work.
+Can you tell the RA to use pyton from a command line or do they need to click on psychopy gui?
+
+
