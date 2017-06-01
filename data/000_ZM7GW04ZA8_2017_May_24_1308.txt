@@ -1,3 +1,0 @@
-participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
-0	1	matrices	[0, 0, 0, 0, 0]	False
-0	2	matrices	[0, 1, 1, 1, 0]	False

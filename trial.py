@@ -9,7 +9,7 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
     # set up mouse
     mouse = event.Mouse()
     mouse.setVisible(False)
-    mouse.setPos(newPos=(0,0))
+    #mouse.setPos(newPos=(0,0))
 
     # shuffle the stimuli if it is a matrix trial but not if it is a faces trial
     if stimuliType == "matrices":
@@ -69,7 +69,7 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
 
     # phase 3, response collection
     # set the mouse cursor to visible because the participant is using the mouse to click on images and needs to see where it is currently hovering.
-    mouse.setPos(newPos=(0,0))
+    #mouse.setPos(newPos=(0,0))
     mouse.setVisible(True)
     # initialise a vector of responses called response_indices
     response_indices = []
