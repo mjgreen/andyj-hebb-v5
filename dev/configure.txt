@@ -1,0 +1,10 @@
+#http://psychopy.org/installation.html
+pip install numpy scipy matplotlib pandas pyopengl pyglet pillow moviepy lxml openpyxl xlrd configobj pyyaml gevent greenlet msgpack-python psutil tables requests[security] pyosf cffi pysoundcard pysoundfile seaborn psychopy_ext python-bidi psychopy
+pip install pyserial pyparallel egi iolabs
+pip install pytest coverage sphinx
+#Needed on Windows:
+pip install pypiwin32
+
+# However, the standalone psychopy for windows has these modules included under its own python, so, on Windows, it is much better to use the standalone. On non-Windows I have found pip install works well, so long as it is the right pip for the version of python.
+
+
