@@ -18,6 +18,21 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
         stimuli = stimuli_raw
     if debug: print("Stimuli: in order of initial selection:\t\t{}".format(stimuli_raw))
     if debug: print("Stimuli: in order of exposure         :\t\t{}".format(stimuli))
+        
+    # show a fixation cross for 500ms
+    fixation_cross = visual.TextStim(
+      win=win,
+      color='black',
+      pos=[0,0],
+      units='height',
+      alignHoriz='center',
+      height=0.03,
+      text='+')
+    fixation_cross.draw()
+    win.flip() # show the cross
+    core.wait(0.5)
+    win.flip() # blank screen after fixation cross
+    core.wait(0.5) # to avoid abrupt transition from vross to stimulus
 
     # phase 1, exposure
     for i in range(len(stimuli)):
