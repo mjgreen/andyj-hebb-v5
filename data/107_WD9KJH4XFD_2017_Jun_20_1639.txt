@@ -1,0 +1,44 @@
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 0, 0, 0]	False
+107	2	matrices	[1, 1, 0, 0, 0]	False
+107	3	faces	[1, 1, 0, 0, 1]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[1, 0, 1, 0, 0]	False
+107	2	matrices	[0, 0, 0, 0, 1]	False
+107	3	faces	[1, 1, 1, 1, 1]	True
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 0, 1, 0]	False
+107	2	matrices	[0, 0, 0, 0, 0]	False
+107	3	faces	[0, 1, 0, 0, 0]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 1, 0, 0]	False
+107	2	matrices	[0, 0, 1, 0, 0]	False
+107	3	faces	[0, 0, 0, 1, 0]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 1, 0, 0]	False
+107	2	matrices	[1, 0, 1, 0, 0]	False
+107	3	faces	[0, 0, 1, 0, 0]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 1, 0, 1]	False
+107	2	matrices	[0, 1, 0, 0, 1]	False
+107	3	faces	[1, 1, 0, 0, 0]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 0, 0, 0]	False
+107	2	matrices	[0, 0, 0, 1, 0]	False
+107	3	faces	[0, 1, 1, 0, 1]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 0, 0, 0]	False
+107	2	matrices	[0, 0, 0, 0, 0]	False
+107	3	faces	[0, 0, 0, 0, 0]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[0, 0, 0, 0, 0]	False
+107	2	matrices	[0, 1, 0, 1, 0]	False
+107	3	faces	[1, 0, 0, 1, 0]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[1, 0, 0, 0, 0]	False
+107	2	matrices	[0, 0, 0, 0, 0]	False
+107	3	faces	[0, 0, 0, 0, 0]	False
+participant_number	trial_number	stimuli_type	accuracy_per_clock_position	accuracy_per_trial
+107	1	matrices	[1, 0, 0, 0, 1]	False
+107	2	matrices	[1, 1, 1, 0, 0]	False
+107	3	faces	[0, 0, 0, 0, 1]	False
