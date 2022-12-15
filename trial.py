@@ -25,7 +25,7 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
       color='black',
       pos=[0,0],
       units='height',
-      alignHoriz='center',
+      anchorHoriz='center',
       height=0.03,
       text='+')
     fixation_cross.draw()
@@ -223,7 +223,7 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
           color='black',
           pos=[0,-.10],
           units='height',
-          alignHoriz='center',
+          anchorHoriz='center',
           height=0.03,
           text=("Press any key to dismiss feedback") )
         feedback_key_wait_message.draw()
@@ -236,7 +236,7 @@ def doOneTrial(stimuli_raw, clock_positions, isPractice, win,
       color='black',
       pos=[0,0],
       units='height',
-      alignHoriz='center',
+      anchorHoriz='center',
       height=0.03,
       #text=("End of trial number {} in current block.".format(trialCount), "Block {}".format(blockCount) )
       text=("Press any key when you are ready to continue"))

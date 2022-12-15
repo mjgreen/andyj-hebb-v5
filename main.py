@@ -33,7 +33,7 @@ end_of_practice_message = visual.TextStim(
       color='black',
       pos=[0,0],
       units='height',
-      alignHoriz='center',
+      anchorHoriz='center',
       height=0.03,
       text='This is the end of the practice phase. There now follows 30 experimental trials for which you will not receive feedback. Press space bar to begin.')
 end_of_practice_message.draw()
